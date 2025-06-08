@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
-<html style="background-image: url('https://ybis.ru/wp-content/uploads/2023/09/krasnyi-fon-172.webp'); background-size: cover; background-repeat: no-repeat;">
+<html lang="ru" style="background: url('https://ybis.ru/wp-content/uploads/2023/09/krasnyi-fon-172.webp') no-repeat center center fixed; background-size: cover;">
 <head>
-<title>YouTube Trends</title>
+    <meta charset="UTF-8">
+    <title>YouTube Trends</title>
     <link rel="stylesheet" href="screen.css" media="screen">
     <link rel="stylesheet" href="print.css" media="print">
     <link rel="stylesheet" href="handheld.css" media="handheld">
@@ -9,55 +10,19 @@
 <body>
     <header>
         <h1>Актуальные тренды YouTube</h1>
-        <nav>
-            <a href="trends.html" class="ajax-link">Тренды</a> |
-            <a href="about.html" class="ajax-link">О сайте</a> |
-            <a href="contact.html" class="ajax-link">Контакты</a> |
-            <a href="more-videos.html" class="ajax-link">Еще видео</a>
-        </nav>
     </header>
-    <section id="content">
+    <section>
         <h2>Популярные видео</h2>
         <img src="https://i.ytimg.com/vi/nWqIu0YBaFs/maxresdefault.jpg" alt="Видео превью">
-        <p>Следите за трендами YouTube!</p>
+        <p>Следите за трендами YouTube! Подборка самых актуальных видео:</p>
+        <ul>
+            <li><a href="https://youtu.be/wzeG1zlRjPQ?si=8ATcqeNLSlHhHINN" target="_blank">🔥 Популярное видео 1</a></li>
+            <li><a href="https://youtu.be/aKq8bkY5eTU?si=B1KRMuup1-N0iUDk" target="_blank">🔥 Популярное видео 2</a></li>
+        </ul>
     </section>
     <footer>
-        <p>Контактный e-mail: yt@mail.com</p>
+        <p>Контактный e-mail: <a href="mailto:yt@mail.com">yt@mail.com</a></p>
         <p>© YouTube Trends. Все права защищены.</p>
     </footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const content = document.getElementById('content');
-    const links = document.querySelectorAll('a.ajax-link');
-
-    links.forEach(link => {
-        link.addEventListener('click', event => {
-            event.preventDefault(); // отменяем переход
-            const url = link.getAttribute('href');
-
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) throw new Error('Ошибка загрузки');
-                    return response.text();
-                })
-                .then(html => {
-                    // Извлечем только содержимое <section> из ответа
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const newContent = doc.querySelector('section');
-                    if (newContent) {
-                        content.innerHTML = newContent.innerHTML;
-                    } else {
-                        content.innerHTML = '<p>Контент не найден.</p>';
-                    }
-                })
-                .catch(err => {
-                    content.innerHTML = `<p>Ошибка загрузки страницы: ${err.message}</p>`;
-                });
-        });
-    });
-});
-</script>
 </body>
 </html>
